@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Dev Learning Platform</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="top-header">
+    <div class="container header-flex">
+      <nav id="navbar">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sections -->
+  <section class="hero" id="home">
+    <h1>Learn Web Development</h1>
+    <p>Start your coding journey with our easy-to-follow tutorials and projects.</p>
+    <a href="#courses" class="cta-button">Explore Courses</a>
+  </section>
+
+  <section class="features" id="courses">
+    <h2>Our Courses</h2>
+    <div class="features-grid">
+      <div class="feature-box">HTML & CSS</div>
+      <div class="feature-box">JavaScript</div>
+      <div class="feature-box">React & Node.js</div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>Why Choose Us?</h2>
+    <p>We offer hands-on learning, beginner-friendly content, and expert support.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: contact@webdevlearn.com</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Web Dev Learning. All rights reserved.</p>
+  </footer>
+
+  <!-- Script for Mobile Menu -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  // Mobile Menu Toggle
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // Fade-in on Scroll
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+
+</body>
+</html>
