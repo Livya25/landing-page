@@ -20,6 +20,7 @@ body {
   background-color: #000;
   padding: 15px 0;
   border-bottom: 1px solid #333;
+  transition: background-color 0.3s ease;
 }
 
 .header-flex {
@@ -36,6 +37,7 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
+  transition: transform 0.3s ease;
 }
 
 .nav-links li a {
@@ -47,6 +49,7 @@ body {
 
 .nav-links li a:hover {
   color: #f72585;
+  transform: scale(1.05);
 }
 
 .hamburger {
@@ -54,6 +57,11 @@ body {
   font-size: 28px;
   color: #f72585;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: rotate(90deg);
 }
 
 @media (max-width: 768px) {
@@ -82,16 +90,24 @@ body {
   text-align: center;
   padding: 100px 20px;
   background: transparent;
+  animation: slideFadeIn 1s ease-out;
 }
 
 .hero h1 {
   font-size: 42px;
   margin-bottom: 20px;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.hero h1:hover {
+  transform: scale(1.05);
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 30px;
+  animation: fadeIn 1s ease-in;
 }
 
 .cta-button {
@@ -101,17 +117,19 @@ body {
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .cta-button:hover {
   background-color: #d11c70;
+  transform: scale(1.05);
 }
 
 /* Features */
 .features {
   padding: 60px 20px;
   text-align: center;
+  animation: slideUp 1s ease-in-out;
 }
 
 .features-grid {
@@ -127,12 +145,19 @@ body {
   padding: 30px;
   border-radius: 12px;
   width: 220px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  background-color: #333;
 }
 
 /* About & Contact */
 .about, .contact {
   padding: 60px 20px;
   text-align: center;
+  animation: fadeInUp 1s ease forwards;
 }
 
 /* Footer */
@@ -140,8 +165,10 @@ footer {
   background-color: #000;
   text-align: center;
   padding: 20px;
-  font-size: 14px;
+  font-size: 14px;
+  animation: fadeIn 1s ease-in;
 }
+
 /* Fade-in Animation */
 .fade-in {
   opacity: 0;
@@ -152,4 +179,47 @@ footer {
 .fade-in.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Keyframe Animations */
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
