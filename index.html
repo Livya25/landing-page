@@ -43,6 +43,10 @@
     <h2>Why Choose Us?</h2>
     <p>We offer hands-on learning, beginner-friendly content, and expert support.</p>
   </section>
+  <section class="hero fade-in" id="home"> ... </section>
+<section class="features fade-in" id="courses"> ... </section>
+<section class="about fade-in" id="about"> ... </section>
+<section class="contact fade-in" id="contact"> ... </section>
 
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
@@ -89,6 +93,33 @@
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // Fade-in on Scroll
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+
 </script>
 
 
